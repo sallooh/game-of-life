@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "game_of_life.h"
 
+/*
 void initialize_grid(Grid *grid) {
     for (int i = 0; i < GRID_SIZE; ++i) {
         for (int j = 0; j < GRID_SIZE; ++j) {
@@ -14,6 +17,18 @@ void initialize_grid(Grid *grid) {
     grid->cells[3][1] = 1;
     grid->cells[3][2] = 1;
     grid->cells[3][3] = 1;
+}
+*/
+void initialize_grid(Grid *grid) {
+    // Seed the random number generator
+    srand(time(NULL));
+
+    // Initialize the grid with random values
+    for (int i = 0; i < GRID_SIZE; ++i) {
+        for (int j = 0; j < GRID_SIZE; ++j) {
+            grid->cells[i][j] = rand() % 2;  // Randomly set cells to 0 or 1
+        }
+    }
 }
 
 void update_grid(Grid *grid) {
